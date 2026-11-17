@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1F2937; /* Dark Slate Gray instead of Midnight Navy */
-  --color-primary-light: #374151;
-  --color-secondary: #FF8E9E; /* Clean Coral Pink */
-  --color-secondary-light: #FFCAD4; /* Soft Pink */
-  --color-accent: #FFB5A7; /* Soft Peach */
-  --color-accent-light: #FCD5CE;
-  --color-background: #FFFFFF;
-  --color-background-dark: #0F172A;
-  
-  /* SaaS Pastel Palette Specifics */
-  --color-primary-soft: #FFB5A7;
-  --color-secondary-soft: #FFCAD4;
-  --color-accent-soft: #B5E2FA; /* Soft Pastel Blue */
-  --color-background-light: #FAFAFA;
-  --color-background-warm: #FFF8F6;
-  --color-text-main: #1F2937;
-  --color-text-muted: #6B7280;
-  
+  --color-primary: #713f12;
+  --color-primary-light: #92400e;
+  --color-secondary: #eab308;
+  --color-secondary-light: #fde047;
+  --color-accent: #facc15;
+  --color-accent-light: #fef08a;
+  --color-background: #fffdf5;
+  --color-background-dark: #422006;
+
+  /* Warm, sunny palette for the school website */
+  --color-primary-soft: #fef08a;
+  --color-secondary-soft: #fef3c7;
+  --color-accent-soft: #fde68a;
+  --color-background-light: #fffdf5;
+  --color-background-warm: #fef9c3;
+  --color-text-main: #422006;
+  --color-text-muted: #78716c;
+
   --font-sans: var(--font-plus-jakarta-sans);
   --font-serif: var(--font-playfair);
 }
@@ -38,14 +38,36 @@
 }
 
 @layer components {
-  /* Dynamic Glassmorphism for Light Mode */
   .glass {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
   }
-  
+
   .glass-dark {
-    @apply bg-slate-900/90 backdrop-blur-md border border-white/5 shadow-xl;
+    @apply bg-amber-950/90 backdrop-blur-md border border-white/5 shadow-xl;
   }
+}
+
+/* Carry the golden school palette through the existing pastel components. */
+.bg-rose-50, .bg-pink-50, .bg-orange-50 {
+  background-color: #fef9c3 !important;
+}
+.bg-rose-100, .bg-pink-100, .bg-orange-100 {
+  background-color: #fef08a !important;
+}
+.bg-rose-200, .bg-pink-200, .bg-orange-200 {
+  background-color: #fde047 !important;
+}
+.text-rose-400, .text-rose-500, .text-rose-600,
+.text-pink-400, .text-pink-500, .text-pink-600,
+.text-orange-400, .text-orange-500, .text-orange-600 {
+  color: #a16207 !important;
+}
+.border-rose-100, .border-rose-200, .border-pink-100, .border-pink-200,
+.border-orange-100, .border-orange-200 {
+  border-color: #fde68a !important;
+}
+.bg-\[\#FAFAFA\] {
+  background-color: #fffdf5 !important;
 }
 
 ::-webkit-scrollbar {
@@ -53,11 +75,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background-light;
+  background: #fffdf5;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+  background: #fde68a;
+  border-radius: 9999px;
+  transition: background-color 150ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #facc15;
 }
 
 /* Core Lenis Smooth Scroll CSS Integration */
@@ -83,11 +111,12 @@ html.lenis, html.lenis body {
 
 /* Hide scrollbar for mobile native snap scroll */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
 }
 
 /* Infinite Marquee Animation for Testimonials */
@@ -96,7 +125,7 @@ html.lenis, html.lenis body {
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-50%); /* Scroll exactly half to allow seamless duplication */
+    transform: translateX(-50%);
   }
 }
 
